@@ -4,3 +4,5 @@ export type SignupSteps =
   | 'location'
   | 'verify'
   | 'password';
+
+export type ForgotSteps = 'prompt' | 'email' | 'newpassword';

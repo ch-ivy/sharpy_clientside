@@ -1,7 +1,7 @@
 <div class="auth-wrapper">
   <div
     class="w-55px mx-auto mb-4 position-absolute bg-white p-1"
-    style="left: 6%; top: 25px; z-index: 10"
+    style="left: 4%; top: 35px; z-index: 10"
   >
     <img src="/assets/media/svg/logo.svg" alt="logo" class="img-fluid" />
   </div>
@@ -57,7 +57,7 @@
     <!-- end::range slider  -->
 
     <!-- begin::Form  -->
-    <form [formGroup]="regForm">
+    <form [formGroup]="regForm" ngxsForm="formstate.regForm">
       <div style="height: 97vh; overflow: auto">
         <!-- begin::Email Form  -->
         <div class="row mt-20" *ngIf="steps == 'email'">
@@ -78,7 +78,7 @@
                     First, Enter your email address
                   </label>
                   <input
-                    type="text"
+                    type="email"
                     class="form-control"
                     aria-describedby="helpId"
                     placeholder="Your email address"
@@ -187,9 +187,14 @@
             <div class="col-sm-10 col-12 text-center">
               <!-- begin::Headline  -->
               <h1 style="font-weight: 400">
-                <span *ngIf="steps == 'account_type'"
-                  >What kind of account would you like to open today?</span
-                >
+                <span *ngIf="steps == 'account_type'">
+                  <span *ngIf="first_account_type">
+                    What kind of account would you like to open today?
+                  </span>
+                  <span *ngIf="!first_account_type">
+                    What kind of business do you offer?
+                  </span>
+                </span>
                 <span *ngIf="steps == 'location'">
                   Please Confirm your Location
                 </span>
@@ -217,7 +222,7 @@
               <ng-container *ngIf="steps == 'account_type'">
                 <!-- begin::Option Group  -->
                 <div
-                  *ngIf="fv['account_type'].invalid"
+                  *ngIf="first_account_type"
                   class="mt-15 mx-auto d-flex flex-wrap justify-content-center"
                 >
                   <!-- begin::Option  -->
@@ -263,13 +268,13 @@
                 <!-- begin::Business Option Group  -->
 
                 <div
-                  *ngIf="fv['account_type'].value == 'business'"
+                  *ngIf="!first_account_type"
                   class="mt-15 mx-auto d-flex flex-wrap justify-content-center"
                 >
                   <!-- begin::Option  -->
                   <div
-                    [class.selected]="fv['account_type'].value == 'personal'"
-                    (click)="selectAccountType('personal')"
+                    [class.selected]="fv['acc_type2'].value == 'product'"
+                    (click)="selectBusinessType('product')"
                     class="card option text-white mx-3"
                   >
                     <div class="w-100px h-100px mx-auto mt-5">
@@ -287,7 +292,7 @@
                   <!-- begin::Option  -->
                   <div
                     class="card overlay option text-white mx-3"
-                    (click)="selectAccountType('business')"
+                    [class.selected]="fv['acc_type2'].value == 'service'"
                   >
                     <div class="w-100px h-100px mx-auto mt-5">
                       <img src="/assets/media/pic-icons/service.png" alt="" />

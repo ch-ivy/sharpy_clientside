@@ -18,6 +18,7 @@ export class SignUpComponent implements OnInit {
   range = 20;
   count = 1;
   location_list = ['Famagusta', 'Girne', 'Lefkosia', 'Lefke', 'Iskele'];
+  first_account_type = true;
   @ViewChild('steprange') element!: ElementRef;
 
   constructor(
@@ -27,11 +28,6 @@ export class SignUpComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.acc_route.queryParams.subscribe((data) => {
-      this.steps = data['steps'];
-      this.next();
-    });
-
     this.regForm = this.fb.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -83,33 +79,34 @@ export class SignUpComponent implements OnInit {
   }
 
   next() {
-    console.log(this.regForm.value);
-
     switch (this.steps) {
       case 'email': {
         this.count++;
-        return (
-          this.fv['email'].invalid
-            ? this.fv['email'].markAsTouched()
-            : (this.steps = 'account_type'),
-          this.router.navigate(['/auth/signup'], {
-            queryParams: { steps: this.steps },
-          })
-        );
+        return this.fv['email'].invalid
+          ? this.fv['email'].markAsTouched()
+          : (this.steps = 'account_type');
       }
       case 'account_type': {
         const acc_: 'personal' | 'business' = this.fv['account_type'].value;
         if (acc_ == 'personal') {
+          this.fv['acc_type2'].removeValidators(Validators.required);
+          this.fv['acc_type2'].reset('');
+          this.regForm.updateValueAndValidity();
           this.steps = 'location';
-        } else {
-          // route to another page
         }
+        if (acc_ == 'business' && this.first_account_type) {
+          // route to another page
+          this.fv['acc_type2'].addValidators(Validators.required);
+          this.regForm.updateValueAndValidity();
+          this.first_account_type = false;
+          return;
+        }
+
+        if (!this.first_account_type) this.steps = 'location';
+        this.count++;
         this.range = 70 - 0.25 * 80;
         this.element.nativeElement.style.background = `linear-gradient(to right, #09825d 0%, #09825d ${this.range}%, #ACACAC ${this.range}%, #ACACAC 100%)`;
-        this.count++;
-        this.router.navigate(['/auth/signup'], {
-          queryParams: { steps: this.steps },
-        });
+
         return;
       }
       case 'location': {
@@ -118,10 +115,7 @@ export class SignUpComponent implements OnInit {
           : ((this.steps = 'verify'),
             this.count++,
             (this.range = 75),
-            (this.element.nativeElement.style.background = `linear-gradient(to right, #09825d 0%, #09825d ${this.range}%, #ACACAC ${this.range}%, #ACACAC 100%)`),
-            this.router.navigate(['/auth/signup'], {
-              queryParams: { steps: this.steps },
-            }));
+            (this.element.nativeElement.style.background = `linear-gradient(to right, #09825d 0%, #09825d ${this.range}%, #ACACAC ${this.range}%, #ACACAC 100%)`));
       }
       case 'verify': {
         if (this.fv['area_code'].invalid || this.fv['phone'].invalid) {
@@ -133,9 +127,7 @@ export class SignUpComponent implements OnInit {
         this.count++;
         this.range = 100;
         this.element.nativeElement.style.background = `linear-gradient(to right, #09825d 0%, #09825d ${this.range}%, #ACACAC ${this.range}%, #ACACAC 100%)`;
-        this.router.navigate(['/auth/signup'], {
-          queryParams: { steps: this.steps },
-        });
+
         return;
       }
       case 'password': {
@@ -154,6 +146,7 @@ export class SignUpComponent implements OnInit {
 
     const email = this.fv['email'].value;
     const password = this.fv['password'].value;
+    console.log(this.regForm.value);
 
     setTimeout(() => {
       this.isSubmit.next(false);
@@ -169,9 +162,7 @@ export class SignUpComponent implements OnInit {
 
         this.count = 4;
         this.steps = 'verify';
-        this.router.navigate(['/auth/signup'], {
-          queryParams: { steps: this.steps },
-        });
+
         return;
       }
       case 'verify': {
@@ -180,9 +171,7 @@ export class SignUpComponent implements OnInit {
 
         this.element.nativeElement.style.background = `linear-gradient(to right, #09825d 0%, #09825d ${this.range}%, #ACACAC ${this.range}%, #ACACAC 100%)`;
         this.steps = 'location';
-        this.router.navigate(['/auth/signup'], {
-          queryParams: { steps: this.steps },
-        });
+
         return;
       }
       case 'location': {
@@ -191,14 +180,20 @@ export class SignUpComponent implements OnInit {
         this.element.nativeElement.style.background = `linear-gradient(to right, #09825d 0%, #09825d ${this.range}%, #ACACAC ${this.range}%, #ACACAC 100%)`;
         this.count = 2;
         this.steps = 'account_type';
-        this.router.navigate(['/auth/signup'], {
-          queryParams: { steps: this.steps },
-        });
+        return;
+      }
+      case 'account_type': {
+        this.count = 1;
+        this.range = 20;
+        this.element.nativeElement.style.background = `linear-gradient(to right, #09825d 0%, #09825d ${this.range}%, #ACACAC ${this.range}%, #ACACAC 100%)`;
+
+        !this.first_account_type
+          ? (this.first_account_type = true)
+          : (this.steps = 'email');
         return;
       }
       default:
         this.steps = 'email';
-        this.router.navigate(['/auth/signup']);
     }
   }
 }
