@@ -1,0 +1,12 @@
+{
+    "favorites.resources": [
+        {
+            "filePath": "src\\assets\\sass\\core\\components\\_variables.scss",
+            "group": "Default"
+        },
+        {
+            "filePath": "src\\assets\\sass\\components\\_variables.custom.scss",
+            "group": "Default"
+        }
+    ]
+}

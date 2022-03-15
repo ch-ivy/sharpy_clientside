@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/sass/style";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+}
+a {
+  cursor: pointer;
+}
+.text-underline {
+  text-decoration: underline;
+}
+
+input[type="text"],
+input[type="password"],
+button {
+  height: 48px !important;
+}

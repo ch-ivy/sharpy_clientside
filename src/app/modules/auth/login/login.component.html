@@ -1,0 +1,153 @@
+<div class="auth-wrapper">
+  <div class="container">
+    <div class="row mt-20">
+      <div class="col-lg-4 d-none d-lg-flex justify-content-center my-auto">
+        <img src="/assets/media/svg/signin.svg" alt="" class="img-fluid" />
+      </div>
+      <div class="col-lg-8 col-12">
+        <div class="ms-lg-10 side-form">
+          <div class="mt-5 text-center">
+            <div class="logo mx-auto mb-4">
+              <img
+                src="/assets/media/svg/logo.svg"
+                alt="logo"
+                class="img-fluid"
+              />
+            </div>
+            <h1>Welcome to Sharpy</h1>
+            <a
+              class="h6 hover-none"
+              href="/auth/signup"
+              routerLink="/auth/signup"
+              >New to Sharpy?
+
+              <span class="text-warning text-underline ms-1"> Sign Up </span></a
+            >
+          </div>
+
+          <!-- begin::form  -->
+          <form [formGroup]="loginForm" class="container mt-10 mx-auto">
+            <!-- begin::Input Field  -->
+            <div class="form-group mb-10">
+              <input
+                type="text"
+                class="form-control"
+                aria-describedby="helpId"
+                placeholder="Your email address"
+                formControlName="email"
+                [class.is-invalid]="fv['email'].touched && fv['email'].invalid"
+              />
+            </div>
+            <!-- end::Input Field  -->
+
+            <!-- begin::Input Field  -->
+            <div class="form-group mb-10 position-relative">
+              <input
+                [type]="password_type"
+                class="form-control"
+                aria-describedby="helpId"
+                placeholder="Your password"
+                formControlName="password"
+                [class.is-invalid]="
+                  fv['password'].touched && fv['password'].invalid
+                "
+              />
+              <!--begin::eye icon-->
+              <button
+                class="eye-icon btn btn-icon"
+                (click)="togglePasswordType()"
+              >
+                <!--begin::Svg Icon-->
+                <span
+                  class="bi bi-eye-{{
+                    password_type == 'Text' ? 'slash-fill' : 'fill'
+                  }} fs-2 text-gray-500"
+                >
+                </span>
+                <!--end::Svg Icon-->
+              </button>
+              <!--end::eye icon-->
+            </div>
+            <!-- end::Input Field  -->
+
+            <!-- begin:: Submit button  -->
+            <div class="form-group mb-10">
+              <button
+                (click)="submit()"
+                class="btn btn-success-dark bg-hover-success position-relative w-100 btn-submit"
+              >
+                <ng-container *ngIf="!(isLogin | async)">
+                  <i class="bi bi-lock fs-4"></i> Login
+                </ng-container>
+
+                <span *ngIf="isLogin | async"
+                  >Please wait...
+                  <span
+                    class="spinner-border spinner-border-sm align-middle ms-2"
+                  ></span
+                ></span>
+              </button>
+            </div>
+            <!-- end::Submit button  -->
+            <div class="d-flex flex-stack mb-10">
+              <div
+                class="form-check form-check-custom form-check-primary form-check-sm"
+              >
+                <input
+                  class="form-check-input"
+                  [class.bg-grey-green]="fv['remember'].value == false"
+                  type="checkbox"
+                  formControlName="remember"
+                  id="flexRadioLg"
+                />
+                <label class="form-check-label" for="flexRadioLg">
+                  Remember Me
+                </label>
+              </div>
+
+              <a
+                href="/auth/forgot-password"
+                routerLink="/auth/forgot-password"
+                class="link-danger text-decoration-underline fs-6"
+                >Trouble logging in?</a
+              >
+            </div>
+
+            <div class="mb-10 providers">
+              <p class="fs-4">Or Login with</p>
+              <!-- begin::Login providers  -->
+              <div class="d-flex flex-stack my-6 ms-sm-8 ms-2">
+                <!-- begin::button link  -->
+                <a class="btn btn-grey-green h-50px w-25">
+                  <img
+                    alt="Logo"
+                    src="/assets/media/brand-logos/google-icon.svg"
+                    class="h-20px mx-auto"
+                /></a>
+                <!-- end::Button link  -->
+
+                <!-- begin::Button link  -->
+                <a class="btn btn-grey-green w-25 h-50px">
+                  <img
+                    alt="Logo"
+                    src="/assets/media/brand-logos/facebook.svg"
+                    class="h-20px mx-auto"
+                /></a>
+                <!-- end::Button Link  -->
+
+                <!-- begin::Button Link  -->
+                <a class="btn btn-grey-green w-25 h-50px">
+                  <img
+                    alt="Logo"
+                    src="/assets/media/brand-logos/apple-black.svg"
+                    class="h-20px mx-auto"
+                /></a>
+                <!-- end::Button Link  -->
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
