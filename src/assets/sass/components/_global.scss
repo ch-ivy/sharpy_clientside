@@ -5,9 +5,14 @@
 .sm-img {
   height: 80px;
   width: 80px;
+
   img {
     height: 100%;
     width: 100%;
     object-fit: cover;
   }
+}
+
+.x-sm-img {
+  width: 55px;
 }

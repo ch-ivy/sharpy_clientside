@@ -1,0 +1,43 @@
+.page {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  .aside {
+    height: 100vh;
+    overflow-y: auto;
+    width: 240px;
+    z-index: 10;
+
+    .nav-link {
+      border-radius: 0;
+      i {
+        vertical-align: bottom;
+      }
+    }
+    .nav-item {
+      margin-right: 0 !important;
+    }
+    .nav-link:hover,
+    .nav-link.active {
+      background-color: $grey-green !important;
+      color: $primary-dark !important;
+      border-right: 5px solid $orange;
+    }
+  }
+  .content {
+    background-color: #f4f9fc;
+    height: 100vh;
+    overflow: hidden;
+    width: calc(100% - 240px);
+    .main-content {
+      height: calc(100vh - 60px);
+      overflow-y: auto;
+    }
+  }
+}
+
+// Tablet & Mobile Modes
+@include media-breakpoint-down(lg) {
+}

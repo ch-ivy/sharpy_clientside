@@ -1,0 +1,70 @@
+<div class="page">
+  <!-- begin::SideBar  -->
+
+  <div
+    class="aside"
+    [ngClass]="{ 'drawer drawer-start': set.breakpointMD$ | async }"
+    [class.drawer-on]="drawer_class"
+    [class.shadow-sm]="drawer_class || !(set.breakpointMD$ | async)"
+  >
+    <div class="d-flex flex-column flex-shrink-0 bg-white w-100">
+      <!-- begin::Logo  -->
+      <a href="/" routerLink="/" class="d-flex mx-auto align-items-center my-5">
+        <div class="x-sm-img">
+          <img src="/assets/media/svg/logo.svg" alt="logo" class="img-fluid" />
+        </div>
+      </a>
+      <!-- end::Logo  -->
+
+      <ul class="nav nav-pills my-7 flex-column mb-auto">
+        <ng-container *ngFor="let item of routes; index as i">
+          <p *ngIf="i == 0" class="text-muted px-2">MAIN</p>
+          <p *ngIf="i == 4" class="text-muted px-2 mt-5">ACCOUNT</p>
+
+          <li class="nav-item mb-2">
+            <a
+              [href]="item.route"
+              [routerLink]="['/dashboard' + item.route]"
+              [routerLinkActive]="['/dashboard' + item.route]"
+              class="nav-link text-primary-dark py-3 px-2"
+              aria-current="page"
+            >
+              <i class="{{ item.icon }} mx-3 fs-3 text-primary-dark"></i>
+              {{ item.name }}
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+
+  <!-- end::Sidebar  -->
+
+  <!-- begin::content  -->
+
+  <div class="content" [class.w-100]="set.breakpointMD$ | async">
+    <nav
+      class="navbar px-5 d-flex align-content-stretch navbar-expand-md bg-white h-60px"
+    >
+      <button
+        (click)="drawer_class = !drawer_class"
+        *ngIf="set.breakpointMD$ | async"
+        class="navbar-toggler text-hover-light btn-light-primary-dark btn-icon btn"
+        type="button"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="bi bi-list fs-3"></i>
+      </button>
+      <div class="d-flex justify-content-end w-md-100">
+        <a href="" class="btn btn-hover-primary-dark btn-link text-primary-dark"
+          >Go shopping <i class="bi bi-bag ms-2 fs-3"></i
+        ></a>
+      </div>
+    </nav>
+
+    <div class="main-content" (click)="drawer_class = false"></div>
+  </div>
+
+  <!-- end::content  -->
+</div>
