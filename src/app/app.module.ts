@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
@@ -17,6 +18,7 @@ import { SignUpFormState } from './_store/signup-form-state';
       developmentMode: !environment.production,
     }),
     NgxsFormPluginModule.forRoot(),
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

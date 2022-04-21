@@ -25,7 +25,7 @@
             <a
               [href]="item.route"
               [routerLink]="['/dashboard' + item.route]"
-              [routerLinkActive]="['/dashboard' + item.route]"
+              routerLinkActive="active"
               class="nav-link text-primary-dark py-3 px-2"
               aria-current="page"
             >
@@ -34,6 +34,12 @@
             </a>
           </li>
         </ng-container>
+        <li class="nav-item mb-2">
+          <a class="nav-link text-primary-dark py-3 px-2" aria-current="page">
+            <i class="bi bi-box-arrow-right mx-3 fs-3 text-primary-dark"></i>
+            Logout
+          </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -63,7 +69,9 @@
       </div>
     </nav>
 
-    <div class="main-content" (click)="drawer_class = false"></div>
+    <div class="main-content" (click)="drawer_class = false">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 
   <!-- end::content  -->

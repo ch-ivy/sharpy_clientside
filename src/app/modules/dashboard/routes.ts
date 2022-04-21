@@ -1,8 +1,8 @@
 export const RouteLinks = [
   {
-    name: 'Dashboard',
+    name: 'Overview',
     icon: 'bi bi-speedometer2',
-    route: '/',
+    route: '/overview',
   },
   {
     name: 'Messages',
@@ -12,31 +12,26 @@ export const RouteLinks = [
   {
     name: 'Order List',
     icon: 'bi bi-geo-alt',
-    route: '',
+    route: '/order-list',
   },
   {
     name: 'Inventory',
     icon: 'bi bi-gift',
-    route: '',
+    route: '/inventory',
   },
   {
     name: 'Profile',
     icon: 'bi bi-person',
-    route: '',
+    route: '/profile',
   },
   {
     name: 'Settings',
     icon: 'bi bi-gear',
-    route: '',
+    route: '/settings',
   },
   {
     name: 'Help',
     icon: 'bi bi-headset',
-    route: '',
-  },
-  {
-    name: 'Logout',
-    icon: 'bi bi-box-arrow-right',
-    route: '',
+    route: '/help',
   },
 ];

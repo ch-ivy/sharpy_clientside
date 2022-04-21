@@ -1,6 +1,6 @@
 <div class="auth-wrapper">
   <div
-    class="w-55px mx-auto mb-4 position-absolute bg-white p-1"
+    class="w-55px mx-auto mb-4 position-sm-absolute bg-white p-1 mt-sm-0 mt-2"
     style="left: 4%; top: 35px; z-index: 10"
   >
     <img src="/assets/media/svg/logo.svg" alt="logo" class="img-fluid" />
@@ -8,7 +8,10 @@
 
   <div class="container position-relative">
     <!-- begin::range slider  -->
-    <div class="step-range ms-sm-auto ms-20" *ngIf="steps !== 'email'">
+    <div
+      class="step-range ms-sm-auto pb-4 w-md-75 w-100"
+      *ngIf="steps !== 'email'"
+    >
       <input
         type="range"
         class="form-range input-color-success"
@@ -58,9 +61,9 @@
 
     <!-- begin::Form  -->
     <form [formGroup]="regForm" ngxsForm="formstate.regForm">
-      <div style="height: 97vh">
+      <div>
         <!-- begin::Email Form  -->
-        <div class="row mt-20" *ngIf="steps == 'email'">
+        <div class="row mt-sm-20 0 mt-2" *ngIf="steps == 'email'">
           <div class="col-lg-4 d-none d-lg-flex justify-content-center my-auto">
             <img src="/assets/media/svg/signup.svg" alt="" class="img-fluid" />
           </div>
@@ -71,7 +74,7 @@
               </div>
 
               <!-- begin::form  -->
-              <div class="container mt-10 mx-auto">
+              <div class="w-sm-75 w-100 mt-10 mx-auto">
                 <!-- begin::Input Field  -->
                 <div class="form-group mb-10">
                   <label class="mb-4 opacity-50">
@@ -85,6 +88,28 @@
                     formControlName="email"
                     [class.is-invalid]="
                       fv['email'].touched && fv['email'].invalid
+                    "
+                  />
+
+                  <input
+                    type="text"
+                    class="form-control my-3"
+                    aria-describedby="helpId"
+                    placeholder="Username"
+                    formControlName="user_name"
+                    [class.is-invalid]="
+                      fv['user_name'].touched && fv['user_name'].invalid
+                    "
+                  />
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-describedby="helpId"
+                    placeholder="Your full name"
+                    formControlName="name"
+                    [class.is-invalid]="
+                      fv['name'].touched && fv['name'].invalid
                     "
                   />
                 </div>
@@ -169,15 +194,27 @@
         <!-- end::Email Form  -->
 
         <!-- begin::Back  -->
-        <div class="mt-20 pt-10" *ngIf="steps !== 'email'">
+        <div
+          class="mt-sm-7 pt-7 pb-20"
+          style="height: calc(100vh - 5rem); overflow-y: auto"
+          *ngIf="steps !== 'email'"
+        >
           <div class="row">
             <div
               (click)="back()"
               class="back mb-5 col-sm-2 text-hover-success-dark"
             >
               <p class="fs-4">
-                <i class="bi bi-arrow-left me-2 text-black"></i>
-                <span class="text-decoration-underline">Back</span>
+                <i
+                  class="bi bi-arrow-left me-2 text-black d-none d-sm-inline"
+                ></i>
+                <i
+                  class="bi bi-arrow-left-circle fs-2 d-sm-none d-inline me-2 text-black"
+                ></i>
+
+                <span class="text-decoration-underline d-none d-sm-inline"
+                  >Back</span
+                >
               </p>
             </div>
             <!-- end::Back  -->
@@ -186,7 +223,7 @@
 
             <div class="col-sm-10 col-12 text-center">
               <!-- begin::Headline  -->
-              <h1 style="font-weight: 400">
+              <h1 style="font-weight: 400" class="fs-sm-1 fs-5">
                 <span *ngIf="steps == 'account_type'">
                   <span *ngIf="first_account_type">
                     What kind of account would you like to open today?
@@ -207,6 +244,7 @@
                   Create your unique password
                 </span>
               </h1>
+
               <p class="mt-4 opacity-50" *ngIf="steps == 'account_type'">
                 You can add another account later on too
               </p>
@@ -231,7 +269,9 @@
                     (click)="selectAccountType('personal')"
                     class="card option text-white mx-3"
                   >
-                    <div class="w-100px h-100px mx-auto mt-5">
+                    <div
+                      class="w-sm-100px h-sm-100px h-60px w-60px mx-auto mt-5"
+                    >
                       <img src="/assets/media/pic-icons/personal.png" alt="" />
                     </div>
 
@@ -249,7 +289,9 @@
                     (click)="selectAccountType('business')"
                     [class.selected]="fv['account_type'].value == 'business'"
                   >
-                    <div class="w-100px h-100px mx-auto mt-5">
+                    <div
+                      class="w-sm-100px h-sm-100px h-60px w-60px mx-auto mt-5"
+                    >
                       <img src="/assets/media/pic-icons/business.png" alt="" />
                     </div>
 
@@ -277,7 +319,9 @@
                     (click)="selectBusinessType('product')"
                     class="card option text-white mx-3"
                   >
-                    <div class="w-100px h-100px mx-auto mt-5">
+                    <div
+                      class="w-sm-100px h-sm-100px h-60px w-60px mx-auto mt-5"
+                    >
                       <img src="/assets/media/pic-icons/product.png" alt="" />
                     </div>
 
@@ -294,7 +338,9 @@
                     class="card overlay option text-white mx-3"
                     [class.selected]="fv['acc_type2'].value == 'service'"
                   >
-                    <div class="w-100px h-100px mx-auto mt-5">
+                    <div
+                      class="w-sm-100px h-sm-100px h-60px w-60px mx-auto mt-5"
+                    >
                       <img src="/assets/media/pic-icons/service.png" alt="" />
                     </div>
 

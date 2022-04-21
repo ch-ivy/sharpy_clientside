@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, retry } from 'rxjs';
-import { SignupSteps } from 'src/app/models/auth.model';
+import { SignUpParam, SignupSteps } from 'src/app/models/auth.model';
 import { PasswordValidator } from 'src/app/services/validator';
 
 @Component({
@@ -31,6 +31,8 @@ export class SignUpComponent implements OnInit {
     this.regForm = this.fb.group(
       {
         email: ['', [Validators.required, Validators.email]],
+        user_name: ['', [Validators.required]],
+        name: ['', [Validators.required]],
         account_type: ['', [Validators.required]],
         acc_type2: [''],
         location: ['', [Validators.required]],
@@ -82,7 +84,9 @@ export class SignUpComponent implements OnInit {
     switch (this.steps) {
       case 'email': {
         this.count++;
-        return this.fv['email'].invalid
+        return this.fv['email'].invalid ||
+          this.fv['user_name'].invalid ||
+          this.fv['name'].invalid
           ? this.fv['email'].markAsTouched()
           : (this.steps = 'account_type');
       }
@@ -144,14 +148,16 @@ export class SignUpComponent implements OnInit {
   submit() {
     this.isSubmit.next(true);
 
-    const email = this.fv['email'].value;
-    const password = this.fv['password'].value;
-    console.log(this.regForm.value);
-
-    setTimeout(() => {
-      this.isSubmit.next(false);
-      this.router.navigate(['dashboard']);
-    }, 2000);
+    const data: SignUpParam = {
+      email: this.fv['email'].value,
+      password: this.fv['password'].value,
+      phone: this.fv['area_code'].value + this.fv['phone'].value,
+      isSeller: this.fv['account_type'].value == 'business' ? true : false,
+      location: this.fv['location'].value,
+      fullName: this.fv['name'].value,
+      username: this.fv['user_name'].value,
+    };
+    console.log(data);
   }
 
   back() {

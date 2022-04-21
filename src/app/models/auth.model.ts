@@ -6,3 +6,13 @@ export type SignupSteps =
   | 'password';
 
 export type ForgotSteps = 'prompt' | 'email' | 'newpassword';
+
+export interface SignUpParam {
+  fullName: string;
+  username: string;
+  email: string;
+  password: string;
+  isSeller: boolean;
+  location: string;
+  phone: string;
+}
