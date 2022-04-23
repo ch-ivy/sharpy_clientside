@@ -70,7 +70,9 @@
     </nav>
 
     <div class="main-content" (click)="drawer_class = false">
-      <router-outlet></router-outlet>
+      <div id="kt_content_container" class="container-xxl">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 

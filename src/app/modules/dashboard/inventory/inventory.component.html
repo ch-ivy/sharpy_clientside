@@ -1,1 +1,100 @@
-<p>inventory works!</p>
+<div class="col-md-10 mx-auto mt-10">
+  <!-- begin::Header  -->
+  <div class="d-flex flex-stack">
+    <h2 class="fs-6">Collections</h2>
+    <div class="fw-normal">
+      <i class="bi bi-plus fs-2x"></i>
+    </div>
+  </div>
+  <!-- end::Header  -->
+
+  <!-- begin::Search Input  -->
+  <div class="my-5">
+    <div class="d-flex align-items-center position-relative my-1">
+      <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+      <span class="svg-icon svg-icon-1 position-absolute ms-6">
+        <i class="bi bi-search"></i>
+      </span>
+      <!--end::Svg Icon-->
+      <input
+        type="text"
+        data-kt-user-table-filter="search"
+        class="form-control bg-light-primary-dark ps-14"
+        placeholder="Search"
+      />
+
+      <span
+        class="svg-icon svg-icon-1 position-absolute ms-6"
+        style="right: 1.5em"
+      >
+        <i class="bi bi-funnel text-primary-dark fs-4"></i>
+      </span>
+    </div>
+  </div>
+  <!-- end::Search Input  -->
+
+  <!-- begin::Content  -->
+  <div class="row mt-15">
+    <!-- begin::Collections  -->
+    <ng-container *ngIf="view_mode == 'collection'">
+      <ng-container *ngFor="let item of collections; index as i">
+        <div class="col-xl-4 col-sm-6 col-12">
+          <div class="collection" (click)="view_mode = 'products'">
+            <div
+              class="collection-box overlay overflow-hidden d-flex flex-wrap"
+            >
+              <ng-container *ngFor="let item of art_grid; index as j">
+                <div class="img-box">
+                  <img
+                    src="/assets/media/images/demo{{
+                      i == 0 ? j + 1 : j + 5
+                    }}.png"
+                    alt=""
+                  />
+                </div> </ng-container
+              ><!-- begin::Overlay  -->
+              <div class="overlay-layer bg-dark bg-opacity-75">
+                <button class="btn btn-icon svg-icon svg-icon-1 text-white">
+                  <i class="bi bi-pen"></i>
+                </button>
+                <button class="btn btn-icon svg-icon svg-icon-1 text-white">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+              <!-- end::Overlay  -->
+            </div>
+            <div class="text-primary-dark fs-4 my-4 text-center">
+              {{ i == 0 ? "Art" : "Fashion" }}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <!-- end::Collections  -->
+
+    <!-- begin:: Product List  -->
+    <ng-container *ngIf="view_mode == 'products'">
+      <!-- begin::product  -->
+      <ng-container *ngFor="let item of product_list; index as i">
+        <div class="col-lg-4 col-sm-6 col-12">
+          <div class="product-box my-3">
+            <div class="img-box">
+              <img
+                src="/assets/media/images/product{{ i + 1 }}.png"
+                alt=""
+                class="img-fluid"
+              />
+            </div>
+            <div class="product-details p-2">
+              <p>Product name</p>
+              <p>{{ 50 | currency: "TRY":"symbol-narrow" }}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <!-- end::product  -->
+    </ng-container>
+    <!-- end:: Product List  -->
+  </div>
+</div>

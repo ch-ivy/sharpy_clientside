@@ -8,7 +8,7 @@
 // Primary
 $primary-dark: if(isDarkMode(), #3699ff, #1f4173);
 $primary-dark-active: if(isDarkMode(), #187de4, #1f4173);
-$primary-dark-light: if(isDarkMode(), #212e48, #b1cffc);
+$primary-dark-light: if(isDarkMode(), #212e48, rgba(31, 65, 115, 0.05));
 $primary-inverse: #ffffff;
 
 // Success

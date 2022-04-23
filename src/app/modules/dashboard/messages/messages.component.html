@@ -1,274 +1,265 @@
-<div id="kt_content_container" class="container-xxl">
-  <!--begin::Layout-->
-  <div class="d-flex flex-column flex-lg-row">
-    <!--begin::Sidebar-->
-    <div
-      class="flex-column flex-lg-row-auto w-100 w-lg-300px w-xl-400px mb-10 mb-lg-0"
-    >
-      <!--begin::Contacts-->
-      <div class="d-flex flex-stack mb-3 align-items-center">
-        <h2 class="text-muted fs-4 fw-normal">Messages</h2>
+<!--begin::Layout-->
+<div class="d-flex flex-column flex-lg-row">
+  <!--begin::Sidebar-->
+  <div
+    class="flex-column flex-lg-row-auto w-100 w-lg-300px w-xl-400px mb-10 mb-lg-0"
+  >
+    <!--begin::Contacts-->
+    <div class="d-flex flex-stack mb-3 align-items-center">
+      <h2 class="text-muted fs-4 fw-normal">Messages</h2>
 
-        <a href="#" class="btn btn-icon btn-primary"
-          ><i class="bi bi-pen fs-4"></i
-        ></a>
-      </div>
+      <a href="#" class="btn btn-icon btn-primary"
+        ><i class="bi bi-pen fs-4"></i
+      ></a>
+    </div>
 
-      <div class="card bg-transparent">
-        <!--begin::Card header-->
-        <div class="card-header pt-7 px-2" id="kt_chat_contacts_header">
-          <!--begin::Form-->
-          <form class="w-100 position-relative" autocomplete="off">
-            <!--begin::Icon-->
-            <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
-            <span
-              class="svg-icon svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 ms-5 translate-middle-y"
-            >
-              <i class="bi bi-search fs-4"></i>
-            </span>
-            <!--end::Svg Icon-->
-            <!--end::Icon-->
-            <!--begin::Input-->
-            <input
-              type="text"
-              class="form-control px-15"
-              name="search"
-              value=""
-              placeholder="Search by username or email..."
-            />
-            <!--end::Input-->
-          </form>
-          <!--end::Form-->
-        </div>
-        <!--end::Card header-->
-        <!--begin::Card body-->
-        <div class="card-body pt-5 px-2" id="kt_chat_contacts_body">
-          <!--begin::List-->
-          <div
-            class="scroll-y me-n5 pe-5 h-200px h-lg-auto"
-            style="max-height: 440px"
+    <div class="card bg-transparent">
+      <!--begin::Card header-->
+      <div class="card-header pt-7 px-2" id="kt_chat_contacts_header">
+        <!--begin::Form-->
+        <form class="w-100 position-relative" autocomplete="off">
+          <!--begin::Icon-->
+          <!--begin::Svg Icon | path: icons/duotune/general/gen021.svg-->
+          <span
+            class="svg-icon svg-icon-2 svg-icon-lg-1 svg-icon-gray-500 position-absolute top-50 ms-5 translate-middle-y"
           >
-            <ng-container *ngFor="let item of userList">
-              <!--begin::Separator-->
-              <div class="separator separator-dashed d-none"></div>
-              <!--end::Separator-->
-              <!--begin::User-->
-              <div
-                class="d-flex flex-stack px-4 pt-4 pb-7 chat-list bg-white mb-2"
-              >
-                <!--begin::Details-->
-                <div class="d-flex align-items-center">
-                  <!--begin::Avatar-->
-                  <div class="symbol symbol-45px symbol-circle">
-                    <span
-                      class="symbol-label bg-light-warning text-warning fs-6 fw-bolder"
-                      >C</span
+            <i class="bi bi-search fs-4"></i>
+          </span>
+          <!--end::Svg Icon-->
+          <!--end::Icon-->
+          <!--begin::Input-->
+          <input
+            type="text"
+            class="form-control px-15"
+            name="search"
+            value=""
+            placeholder="Search by username or email..."
+          />
+          <!--end::Input-->
+        </form>
+        <!--end::Form-->
+      </div>
+      <!--end::Card header-->
+      <!--begin::Card body-->
+      <div class="card-body pt-5 px-2" id="kt_chat_contacts_body">
+        <!--begin::List-->
+        <div
+          class="scroll-y me-n5 pe-5 h-200px h-lg-auto"
+          style="max-height: 440px"
+        >
+          <ng-container *ngFor="let item of userList">
+            <!--begin::Separator-->
+            <div class="separator separator-dashed d-none"></div>
+            <!--end::Separator-->
+            <!--begin::User-->
+            <div
+              class="d-flex flex-stack px-4 pt-4 pb-7 chat-list bg-white mb-2"
+            >
+              <!--begin::Details-->
+              <div class="d-flex align-items-center">
+                <!--begin::Avatar-->
+                <div class="symbol symbol-45px symbol-circle">
+                  <span
+                    class="symbol-label bg-light-warning text-warning fs-6 fw-bolder"
+                    >C</span
+                  >
+                  <div
+                    class="symbol-badge bg-success start-100 top-100 border-4 h-15px w-15px ms-n2 mt-n2"
+                  ></div>
+                </div>
+                <!--end::Avatar-->
+                <div class="ms-5 position-relative">
+                  <!--begin::Details-->
+                  <div class="d-flex flex-stack">
+                    <a
+                      href="#"
+                      class="fs-5 fw-normal text-gray-700 text-hover-primary"
+                      >{{ item.name }}</a
                     >
-                    <div
-                      class="symbol-badge bg-success start-100 top-100 border-4 h-15px w-15px ms-n2 mt-n2"
-                    ></div>
+                    <span class="text-dark fs-7 mb-1 fw-normal">
+                      {{ item.time }}
+                    </span>
                   </div>
-                  <!--end::Avatar-->
-                  <div class="ms-5 position-relative">
-                    <!--begin::Details-->
-                    <div class="d-flex flex-stack">
-                      <a
-                        href="#"
-                        class="fs-5 fw-normal text-gray-700 text-hover-primary"
-                        >{{ item.name }}</a
-                      >
-                      <span class="text-dark fs-7 mb-1 fw-normal">
-                        {{ item.time }}
-                      </span>
-                    </div>
-                    <!--end::Details-->
-                    <hr class="msg-line" />
+                  <!--end::Details-->
+                  <hr class="msg-line" />
 
-                    <!--begin::Lat seen-->
-                    <div class="d-flex flex-column align-items-end mb-auto">
-                      <div class="text-muted fs-7">
-                        {{ item.previewMsg }}
-                      </div>
-                      <span
-                        class="badge badge-sm badge-circle badge-light-danger"
-                        >5</span
-                      >
+                  <!--begin::Lat seen-->
+                  <div class="d-flex flex-column align-items-end mb-auto">
+                    <div class="text-muted fs-7">
+                      {{ item.previewMsg }}
                     </div>
-                    <!--end::Lat seen-->
+                    <span class="badge badge-sm badge-circle badge-light-danger"
+                      >5</span
+                    >
                   </div>
+                  <!--end::Lat seen-->
                 </div>
               </div>
-              <!--end::User-->
-            </ng-container>
-          </div>
-          <!--end::List-->
-        </div>
-        <!--end::Card body-->
-      </div>
-      <!--end::Contacts-->
-    </div>
-    <!--end::Sidebar-->
-    <!--begin::Content-->
-    <div class="flex-lg-row-fluid ms-lg-7 ms-xl-10">
-      <!--begin::Messenger-->
-      <div class="card" id="kt_chat_messenger">
-        <!--begin::Card header-->
-        <div class="card-header" id="kt_chat_messenger_header">
-          <!--begin::Title-->
-          <div class="card-title">
-            <!--begin::User-->
-            <div class="d-flex justify-content-center flex-column me-3">
-              <a
-                href="#"
-                class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1"
-                >Brian Cox</a
-              >
-              <!--begin::Info-->
-              <div class="mb-0 lh-1">
-                <span
-                  class="badge badge-success badge-circle w-10px h-10px me-1"
-                ></span>
-                <span class="fs-7 fw-bold text-muted">Active</span>
-              </div>
-              <!--end::Info-->
             </div>
             <!--end::User-->
-          </div>
-          <!--end::Title-->
+          </ng-container>
         </div>
-        <!--end::Card header-->
-        <!--begin::Card body-->
-        <div class="card-body" id="kt_chat_messenger_body">
-          <!--begin::Messages-->
-          <div
-            class="scroll-y me-n5 pe-5 h-300px h-lg-auto"
-            style="max-height: 293px"
-          >
-            <ng-container *ngFor="let msg of chat | keyvalue">
-              <div class="separator separator-content my-15 text-gray-700">
-                {{ msg.key }}
+        <!--end::List-->
+      </div>
+      <!--end::Card body-->
+    </div>
+    <!--end::Contacts-->
+  </div>
+  <!--end::Sidebar-->
+  <!--begin::Content-->
+  <div class="flex-lg-row-fluid ms-lg-7 ms-xl-10">
+    <!--begin::Messenger-->
+    <div class="card" id="kt_chat_messenger">
+      <!--begin::Card header-->
+      <div class="card-header" id="kt_chat_messenger_header">
+        <!--begin::Title-->
+        <div class="card-title">
+          <!--begin::User-->
+          <div class="d-flex justify-content-center flex-column me-3">
+            <a
+              href="#"
+              class="fs-4 fw-bolder text-gray-900 text-hover-primary me-1 mb-2 lh-1"
+              >Brian Cox</a
+            >
+            <!--begin::Info-->
+            <div class="mb-0 lh-1">
+              <span
+                class="badge badge-success badge-circle w-10px h-10px me-1"
+              ></span>
+              <span class="fs-7 fw-bold text-muted">Active</span>
+            </div>
+            <!--end::Info-->
+          </div>
+          <!--end::User-->
+        </div>
+        <!--end::Title-->
+      </div>
+      <!--end::Card header-->
+      <!--begin::Card body-->
+      <div class="card-body" id="kt_chat_messenger_body">
+        <!--begin::Messages-->
+        <div
+          class="scroll-y me-n5 pe-5 h-300px h-lg-auto"
+          style="max-height: 293px"
+        >
+          <ng-container *ngFor="let msg of chat | keyvalue">
+            <div class="separator separator-content my-15 text-gray-700">
+              {{ msg.key }}
+            </div>
+            <ng-container *ngFor="let item of msg.value">
+              <!--begin::Message(template for out)-->
+              <div
+                *ngIf="item.sender == 'me'"
+                class="d-flex justify-content-end mb-10"
+              >
+                <!--begin::Wrapper-->
+                <div class="d-flex flex-column align-items-end">
+                  <!--begin::Text-->
+                  <div
+                    class="p-3 chatbox-me bg-gray-400 text-dark mw-lg-400px text-end"
+                  >
+                    {{ item.message }}
+                  </div>
+                  <!--end::Text-->
+                  <!--begin::User-->
+                  <div class="d-flex align-items-center mb-2">
+                    <!--begin::Details-->
+                    <div class="mb-3">
+                      <span class="text-muted fs-7 mb-1">{{ item.time }}</span>
+                    </div>
+                    <!--end::Details-->
+                  </div>
+                  <!--end::User-->
+                </div>
+                <!--end::Wrapper-->
               </div>
-              <ng-container *ngFor="let item of msg.value">
-                <!--begin::Message(template for out)-->
-                <div
-                  *ngIf="item.sender == 'me'"
-                  class="d-flex justify-content-end mb-10"
-                >
-                  <!--begin::Wrapper-->
-                  <div class="d-flex flex-column align-items-end">
+              <!--end::Message(template for out)-->
+              <!--begin::Message(template for in)-->
+              <div
+                class="d-flex justify-content-start mb-10"
+                *ngIf="item.sender !== 'me'"
+              >
+                <!--begin::Wrapper-->
+                <div class="d-flex flex-column align-items-start">
+                  <!--begin::User-->
+                  <div class="d-flex align-items-center mb-2">
+                    <!--begin::Avatar-->
+                    <div class="symbol symbol-35px symbol-circle">
+                      <img alt="Pic" src="/assets/media/images/avi.png" />
+                    </div>
+                    <!--end::Avatar-->
                     <!--begin::Text-->
                     <div
-                      class="p-3 chatbox-me bg-gray-400 text-dark mw-lg-400px text-end"
+                      class="p-3 chatbox bg-purple text-white ms-2 mw-lg-400px text-start"
                     >
                       {{ item.message }}
                     </div>
                     <!--end::Text-->
-                    <!--begin::User-->
-                    <div class="d-flex align-items-center mb-2">
-                      <!--begin::Details-->
-                      <div class="mb-3">
-                        <span class="text-muted fs-7 mb-1">{{
-                          item.time
-                        }}</span>
-                      </div>
-                      <!--end::Details-->
-                    </div>
-                    <!--end::User-->
                   </div>
-                  <!--end::Wrapper-->
-                </div>
-                <!--end::Message(template for out)-->
-                <!--begin::Message(template for in)-->
-                <div
-                  class="d-flex justify-content-start mb-10"
-                  *ngIf="item.sender !== 'me'"
-                >
-                  <!--begin::Wrapper-->
-                  <div class="d-flex flex-column align-items-start">
-                    <!--begin::User-->
-                    <div class="d-flex align-items-center mb-2">
-                      <!--begin::Avatar-->
-                      <div class="symbol symbol-35px symbol-circle">
-                        <img alt="Pic" src="/assets/media/images/avi.png" />
-                      </div>
-                      <!--end::Avatar-->
-                      <!--begin::Text-->
-                      <div
-                        class="p-3 chatbox bg-purple text-white ms-2 mw-lg-400px text-start"
-                      >
-                        {{ item.message }}
-                      </div>
-                      <!--end::Text-->
-                    </div>
-                    <!--end::User-->
-                    <!--begin::Details-->
-                    <div class="mb-2 text-end w-100">
-                      <span class="text-muted fs-7 mb-1">
-                        {{ item.time }}
-                      </span>
-                    </div>
-                    <!--end::Details-->
+                  <!--end::User-->
+                  <!--begin::Details-->
+                  <div class="mb-2 text-end w-100">
+                    <span class="text-muted fs-7 mb-1">
+                      {{ item.time }}
+                    </span>
                   </div>
-                  <!--end::Wrapper-->
+                  <!--end::Details-->
                 </div>
-                <!--end::Message(template for in)-->
-              </ng-container>
+                <!--end::Wrapper-->
+              </div>
+              <!--end::Message(template for in)-->
             </ng-container>
-          </div>
-          <!--end::Messages-->
+          </ng-container>
         </div>
-        <!--end::Card body-->
-        <!--begin::Card footer-->
-        <div class="card-footer pt-4" id="kt_chat_messenger_footer">
-          <!--begin::Input-->
-          <textarea
-            class="form-control form-control-flush mb-3"
-            rows="1"
-            data-kt-element="input"
-            placeholder="Type a message"
-          ></textarea>
-          <!--end::Input-->
-          <!--begin:Toolbar-->
-          <div class="d-flex flex-stack">
-            <!--begin::Actions-->
-            <div class="d-flex align-items-center me-2">
-              <button
-                class="btn btn-sm btn-icon btn-active-light-primary me-1"
-                type="button"
-                data-bs-toggle="tooltip"
-                title=""
-                data-bs-original-title="Coming soon"
-              >
-                <i class="bi bi-paperclip fs-3"></i>
-              </button>
-              <button
-                class="btn btn-sm btn-icon btn-active-light-primary me-1"
-                type="button"
-                data-bs-toggle="tooltip"
-                title=""
-                data-bs-original-title="Coming soon"
-              >
-                <i class="bi bi-upload fs-3"></i>
-              </button>
-            </div>
-            <!--end::Actions-->
-            <!--begin::Send-->
-            <button
-              class="btn btn-primary"
-              type="button"
-              data-kt-element="send"
-            >
-              Send
-            </button>
-            <!--end::Send-->
-          </div>
-          <!--end::Toolbar-->
-        </div>
-        <!--end::Card footer-->
+        <!--end::Messages-->
       </div>
-      <!--end::Messenger-->
+      <!--end::Card body-->
+      <!--begin::Card footer-->
+      <div class="card-footer pt-4" id="kt_chat_messenger_footer">
+        <!--begin::Input-->
+        <textarea
+          class="form-control form-control-flush mb-3"
+          rows="1"
+          data-kt-element="input"
+          placeholder="Type a message"
+        ></textarea>
+        <!--end::Input-->
+        <!--begin:Toolbar-->
+        <div class="d-flex flex-stack">
+          <!--begin::Actions-->
+          <div class="d-flex align-items-center me-2">
+            <button
+              class="btn btn-sm btn-icon btn-active-light-primary me-1"
+              type="button"
+              data-bs-toggle="tooltip"
+              title=""
+              data-bs-original-title="Coming soon"
+            >
+              <i class="bi bi-paperclip fs-3"></i>
+            </button>
+            <button
+              class="btn btn-sm btn-icon btn-active-light-primary me-1"
+              type="button"
+              data-bs-toggle="tooltip"
+              title=""
+              data-bs-original-title="Coming soon"
+            >
+              <i class="bi bi-upload fs-3"></i>
+            </button>
+          </div>
+          <!--end::Actions-->
+          <!--begin::Send-->
+          <button class="btn btn-primary" type="button" data-kt-element="send">
+            Send
+          </button>
+          <!--end::Send-->
+        </div>
+        <!--end::Toolbar-->
+      </div>
+      <!--end::Card footer-->
     </div>
-    <!--end::Content-->
+    <!--end::Messenger-->
   </div>
-  <!--end::Layout-->
+  <!--end::Content-->
 </div>
+<!--end::Layout-->
