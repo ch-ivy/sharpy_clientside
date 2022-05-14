@@ -1,0 +1,75 @@
+.product-img {
+  height: 312px;
+  border-radius: 8px;
+  border: 1px solid #000;
+}
+input {
+  height: unset !important;
+}
+.wrapper {
+  background-color: rgba(196, 196, 196, 0.363) !important;
+  min-height: 100vh;
+}
+
+.dropzone {
+  height: 264px;
+  background-color: #e6eaef;
+  border-radius: 5px;
+  position: relative;
+  .form-control {
+    height: 100% !important;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 100;
+  }
+  p {
+    text-align: center;
+    font-size: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    line-height: 1.5;
+    padding: 5px;
+  }
+
+  .image-preview {
+    height: 190px;
+    width: 150px;
+    border-radius: 5px;
+    margin: 10px;
+    .image-box {
+      height: 120px;
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+    }
+    .action {
+      height: 40px;
+      button {
+        height: auto !important;
+        border-radius: 0 0 8px 8px;
+        border: none;
+      }
+    }
+  }
+  .upload-more .btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    &:hover,
+    &:active {
+      color: white !important;
+    }
+  }
+}
+
+textarea {
+  border-color: 0.5px solid #000;
+}

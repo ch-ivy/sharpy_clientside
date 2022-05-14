@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { CollectionDetailsComponent } from './partials/collection-details/collection-details.component';
+import { ProductDetailsComponent } from './partials/product-details/product-details.component';
 
 @Component({
   selector: 'app-inventory',
@@ -10,7 +13,23 @@ export class InventoryComponent implements OnInit {
   collections = [1, 2];
   view_mode: 'collection' | 'products' = 'collection';
   product_list = [1, 2, 3, 4, 5];
-  constructor() {}
+  isDropdown = false;
+
+  constructor(private ms: NgbModal) {}
 
   ngOnInit(): void {}
+
+  openProduct() {
+    this.ms.open(ProductDetailsComponent, {
+      size: 'fullscreen',
+      scrollable: true,
+    });
+  }
+
+  openCollection() {
+    this.ms.open(CollectionDetailsComponent, {
+      size: 'fullscreen',
+      scrollable: true,
+    });
+  }
 }

@@ -1,0 +1,356 @@
+<div class="wrapper h-900px overflow-auto">
+  <div class="container-xxl mt-20 overflow-auto">
+    <div class="col-lg-10 col-xl-9 mx-auto">
+      <!-- begin::header  -->
+      <div class="d-flex flex-stack mb-5">
+        <h2 class="fw-normal">Add Product</h2>
+        <span
+          (click)="ms.close()"
+          class="svg-icon svg-icon-1"
+          style="right: 1.5em"
+        >
+          <i class="bi bi-x-lg fs-4"></i>
+        </span>
+      </div>
+      <!-- end::header  -->
+
+      <div class="card">
+        <div class="card-body">
+          <!-- begin::Form  -->
+          <form class="w-100" [formGroup]="productForm">
+            <div class="form-group">
+              <label for="Name" class="my-5">
+                <span class="fs-4"> Product Details &nbsp; </span>
+
+                <span class="badge p-0 badge-pill badge-primary-dark">
+                  <i class="bi bi-info"></i> </span
+              ></label>
+
+              <input
+                type="text"
+                formControlName="name"
+                class="form-control"
+                placeholder="Product Title"
+                aria-describedby="helpId"
+                [class.is-invalid]="f['name'].touched && f['name'].invalid"
+              />
+            </div>
+
+            <!-- beigin::Input Row  -->
+            <div class="row">
+              <div class="col-sm-6">
+                <!-- begin::Category  -->
+                <div class="form-group">
+                  <label for="Name" class="my-5">
+                    <span class="fs-4"> Select Category &nbsp; </span>
+
+                    <span class="badge p-0 badge-pill badge-primary-dark">
+                      <i class="bi bi-info"></i> </span
+                  ></label>
+
+                  <input
+                    type="text"
+                    formControlName="categories"
+                    class="form-control"
+                    aria-describedby="helpId"
+                    [class.is-invalid]="
+                      f['categories'].touched && f['categories'].invalid
+                    "
+                  />
+                </div>
+                <!-- end::Category  -->
+              </div>
+              <div class="col-sm-6">
+                <!-- begin::Keywords  -->
+                <div class="form-group">
+                  <label for="Name" class="my-5">
+                    <span class="fs-4"> Keywords &nbsp; </span>
+
+                    <span class="badge p-0 badge-pill badge-primary-dark">
+                      <i class="bi bi-info"></i> </span
+                  ></label>
+
+                  <input
+                    type="text"
+                    formControlName="keywords"
+                    class="form-control"
+                    placeholder="Keywords"
+                    aria-describedby="helpId"
+                    [class.is-invalid]="
+                      f['keywords'].touched && f['keywords'].invalid
+                    "
+                  />
+                </div>
+                <!-- end::Keywords  -->
+              </div>
+            </div>
+            <!-- end::Input Row  -->
+
+            <!-- begin::Input Row  -->
+            <div class="row">
+              <div class="col-sm-6">
+                <!-- begin::Category  -->
+                <div class="form-group">
+                  <label for="Name" class="my-5">
+                    <span class="fs-4"> Price &nbsp; </span>
+
+                    <span class="badge p-0 badge-pill badge-primary-dark">
+                      <i class="bi bi-info"></i> </span
+                  ></label>
+
+                  <input
+                    type="number"
+                    min="0"
+                    formControlName="price"
+                    class="form-control"
+                    placeholder="0.00"
+                    aria-describedby="helpId"
+                    [class.is-invalid]="
+                      f['price'].touched && f['price'].invalid
+                    "
+                  />
+                </div>
+                <!-- end::Category  -->
+              </div>
+              <div class="col-sm-6">
+                <!-- begin::Keywords  -->
+                <div class="form-group">
+                  <label for="Name" class="my-5">
+                    <span class="fs-4"> Product Type &nbsp; </span>
+
+                    <span class="badge p-0 badge-pill badge-primary-dark">
+                      <i class="bi bi-info"></i> </span
+                  ></label>
+
+                  <select
+                    formControlName="type"
+                    class="form-select"
+                    aria-label="Select example"
+                    [class.is-invalid]="f['type'].touched && f['type'].invalid"
+                  >
+                    <option [value]="null" class="text-muted">
+                      Select Product Type
+                    </option>
+                    <option value="simple">Simple Product</option>
+                    <option value="digital">Digital Product</option>
+                  </select>
+                </div>
+                <!-- end::Keywords  -->
+              </div>
+            </div>
+
+            <!-- end::Input Row  -->
+
+            <!-- begin::Dropzone  -->
+            <div class="form-group">
+              <label for="Name" class="my-5">
+                <span class="fs-4"> Gallery &nbsp; </span>
+
+                <span class="badge p-0 badge-pill badge-primary-dark">
+                  <i class="bi bi-info"></i> </span
+              ></label>
+
+              <div
+                class="dropzone form-control"
+                [class.is-invalid]="
+                  (fileError | async) ||
+                  (!f['pictures'].value.length && f['pictures'].touched)
+                "
+                #dropzone
+              >
+                <input
+                  type="file"
+                  name=""
+                  #input
+                  id=""
+                  class="form-control"
+                  [class.d-none]="picList.length"
+                  multiple
+                  accept="image/png, image/jpg, image/jpeg"
+                  (change)="handleFiles(input.files)"
+                />
+                <ng-container *ngIf="!picList.length">
+                  <p class="text-primary-dark">
+                    <span>
+                      Drag and Drop Images here <br />
+                      or click to upload
+                      <br />
+                      <i class="bi bi-cloud-upload-fill fs-3x text-sucess"></i
+                    ></span>
+                  </p>
+                </ng-container>
+                <ng-container *ngIf="picList.length">
+                  <div
+                    class="w-100 p-4 d-flex"
+                    style="
+                      flex-wrap: wrap;
+                      overflow-y: auto;
+                      height: 240px;
+                      justify-content: center;
+                    "
+                  >
+                    <ng-container *ngFor="let item of picList; index as index">
+                      <div class="image-preview">
+                        <div class="image-box">
+                          <img [src]="item.url" alt="" srcset="" />
+                        </div>
+                        <div class="action w-100">
+                          <button
+                            (click)="deletePic(index)"
+                            class="bg-light-danger w-100 text-danger"
+                          >
+                            Delete
+                          </button>
+                        </div>
+                      </div>
+                    </ng-container>
+
+                    <div class="upload-more" *ngIf="picList.length < 2">
+                      <button
+                        type="button"
+                        name=""
+                        id=""
+                        class="btn btn-light-primary-dark px-6 h-30px py-1"
+                        (click)="input.click()"
+                      >
+                        Add more
+                      </button>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+              <p
+                *ngIf="
+                  (fileError | async) ||
+                  (!f['pictures'].value.length && f['pictures'].touched)
+                "
+                class="text-danger fs-4"
+              >
+                {{ file_msg }}
+              </p>
+            </div>
+            <!-- end::Dropzone  -->
+
+            <!-- begin::Input  -->
+            <div class="form-group" formArrayName="options">
+              <label for="Name" class="my-5">
+                <span class="fs-4"> Product Options &nbsp; </span>
+
+                <span class="badge p-0 badge-pill badge-primary-dark">
+                  <i class="bi bi-info"></i> </span
+              ></label>
+
+              <ng-container *ngIf="options.length">
+                <!-- begin:: Error Message-->
+                <p
+                  *ngIf="
+                    (!options.controls[options.controls.length - 1]?.value
+                      .name ||
+                      !options.controls[options.controls.length - 1]?.value
+                        .price) &&
+                    options.controls[options.controls.length - 1].touched
+                  "
+                  class="text-danger fs-4"
+                >
+                  Please provide information for this option before adding a new
+                  one
+                </p>
+                <!-- end::Error  Message -->
+                <ng-container
+                  *ngFor="let item of options.controls; index as i"
+                  [formGroupName]="i"
+                >
+                  <div class="form-group mb-4">
+                    <div
+                      (click)="deleteOption(i)"
+                      class="d-flex justify-content-end fw-bold"
+                    >
+                      <i class="bi bi-x-lg text-danger"></i>
+                    </div>
+                    <label for="">Option Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      formControlName="name"
+                      aria-describedby="emailHelpId"
+                      placeholder="E.g different size, color etc"
+                      [class.is-invalid]="
+                        !item.value.name && item.get('name')?.touched
+                      "
+                    />
+                  </div>
+                  <div class="form-group mb-4">
+                    <label for="">Option Price</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      min="0"
+                      formControlName="price"
+                      aria-describedby="emailHelpId"
+                      placeholder="0.00"
+                      [class.is-invalid]="
+                        !item.value.price && item.get('price')?.touched
+                      "
+                    />
+                  </div>
+                </ng-container>
+              </ng-container>
+
+              <button
+                (click)="addOption()"
+                type="button"
+                name=""
+                id=""
+                class="btn btn-primary-dark fw-normal text-white btn-lg w-100"
+              >
+                <i class="bi bi-plus"></i> New Option
+              </button>
+            </div>
+            <!-- end::Input  -->
+
+            <!-- begin::Text area  -->
+
+            <div class="form-group">
+              <label for="Name" class="my-5">
+                <span class="fs-4"> Product Description &nbsp; </span>
+
+                <span class="badge p-0 badge-pill badge-primary-dark">
+                  <i class="bi bi-info"></i> </span
+              ></label>
+
+              <textarea
+                type="text"
+                formControlName="description"
+                rows="5"
+                class="form-control"
+                [class.is-invalid]="
+                  f['description'].touched && f['description'].invalid
+                "
+              ></textarea>
+            </div>
+
+            <!-- end::Text area  -->
+          </form>
+          <!-- end::Form  -->
+        </div>
+
+        <div class="mt-15 mb-3 d-flex justify-content-center actions">
+          <button
+            style="border-radius: 8px 0px 0px 8px"
+            class="btn btn-secondary px-10"
+            (click)="ms.close()"
+          >
+            Cancel
+          </button>
+          <button
+            (click)="submit()"
+            style="border-radius: 0px 8px 8px 0px"
+            class="btn btn-primary-dark text-light"
+          >
+            Add Product
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

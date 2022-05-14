@@ -16,3 +16,6 @@
 .x-sm-img {
   width: 55px;
 }
+.dropdown-toggle::after {
+  display: none !important;
+}

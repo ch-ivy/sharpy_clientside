@@ -1,9 +1,60 @@
+<button
+  type="button"
+  class="btn btn-secondary h-30px"
+  *ngIf="view_mode == 'products'"
+  (click)="view_mode = 'collection'"
+  style="line-height: 1 !important; padding: 0 15px"
+>
+  Back
+</button>
+
 <div class="col-md-10 mx-auto mt-10">
   <!-- begin::Header  -->
   <div class="d-flex flex-stack">
-    <h2 class="fs-6">Collections</h2>
-    <div class="fw-normal">
-      <i class="bi bi-plus fs-2x"></i>
+    <h2 class="fs-6" *ngIf="view_mode == 'collection'">Collections</h2>
+    <h2 class="fs-6" *ngIf="view_mode == 'products'">
+      Inventory &nbsp;({{ product_list.length }})
+    </h2>
+
+    <div ngbDropdown class="fw-normal position-relative add-action">
+      <div class="plus bg-hover-light-success" ngbDropdownToggle>
+        <i class="bi bi-plus fs-2x"></i>
+      </div>
+
+      <!-- begin::DropDown  -->
+      <div
+        ngbDropdownMenu
+        class="menu-title-gray-700 text-center menu-rounded text-hover-white menu-icon-muted fw-bold p-0 fs-6 w-auto text-center"
+      >
+        <!--begin::Menu item-->
+        <div ngbDropdownItem class="px-4 menu-item bg-hover-primary-dark">
+          <a
+            *ngIf="view_mode == 'collection'"
+            (click)="openCollection()"
+            class="menu-link"
+          >
+            <span class="menu-title">Create New collection</span> </a
+          ><a
+            *ngIf="view_mode == 'products'"
+            (click)="openProduct()"
+            class="menu-link"
+          >
+            <span class="menu-title">Add New Products</span>
+          </a>
+        </div>
+        <!--end::Menu item-->
+        <!--begin::Menu item-->
+        <div ngbDropdownItem class="px-4 menu-item bg-hover-primary-dark">
+          <a *ngIf="view_mode == 'collection'" class="menu-link">
+            <span class="menu-title">Manage Collection</span>
+          </a>
+          <a *ngIf="view_mode == 'products'" class="menu-link">
+            <span class="menu-title">Manage Products</span>
+          </a>
+        </div>
+        <!--end::Menu item-->
+      </div>
+      <!-- end::dropdown  -->
     </div>
   </div>
   <!-- end::Header  -->
@@ -78,7 +129,7 @@
       <!-- begin::product  -->
       <ng-container *ngFor="let item of product_list; index as i">
         <div class="col-lg-4 col-sm-6 col-12">
-          <div class="product-box my-3">
+          <div class="product-box my-3" (click)="openProduct()">
             <div class="img-box">
               <img
                 src="/assets/media/images/product{{ i + 1 }}.png"

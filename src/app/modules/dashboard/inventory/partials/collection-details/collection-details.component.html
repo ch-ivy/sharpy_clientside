@@ -1,0 +1,60 @@
+<div class="wrapper">
+  <div class="container-xxl mt-20 overflow-auto">
+    <div class="col-lg-10 col-xl-9 mx-auto">
+      <!-- begin::header  -->
+      <div class="d-flex flex-stack">
+        <h2>Create Collection</h2>
+        <span
+          (click)="ms.close()"
+          class="svg-icon svg-icon-1"
+          style="right: 1.5em"
+        >
+          <i class="bi bi-x-lg fs-4"></i>
+        </span>
+      </div>
+      <!-- end::header  -->
+
+      <div class="card">
+        <div class="card-body">
+          <!-- begin::Form  -->
+          <form class="w-100">
+            <div class="form-group">
+              <label for="Name" class="my-5">
+                <span class="fs-4"> Collection Details &nbsp; </span>
+
+                <span class="badge p-0 badge-pill badge-primary-dark">
+                  <i class="bi bi-info"></i> </span
+              ></label>
+
+              <input
+                type="text"
+                name=""
+                id=""
+                class="form-control"
+                placeholder="Collection Name"
+                aria-describedby="helpId"
+              />
+            </div>
+          </form>
+          <!-- end::Form  -->
+        </div>
+
+        <div class="mt-15 mb-3 d-flex justify-content-center actions">
+          <button
+            style="border-radius: 8px 0px 0px 8px"
+            class="btn btn-secondary px-10"
+            (click)="ms.close()"
+          >
+            Cancel
+          </button>
+          <button
+            style="border-radius: 0px 8px 8px 0px"
+            class="btn btn-primary-dark text-light"
+          >
+            Add Collection
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

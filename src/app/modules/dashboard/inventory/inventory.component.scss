@@ -40,3 +40,25 @@
     }
   }
 }
+
+.plus {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.add-action .menu-item:hover {
+  text-decoration: none !important;
+  .menu-title:hover {
+    color: white !important;
+    text-decoration: none !important;
+  }
+  &:first-of-type:hover {
+    border-radius: 8px 8px 0px 0px;
+  }
+  &:last-of-type:hover {
+    border-radius: 0px 0px 8px 8px;
+  }
+}

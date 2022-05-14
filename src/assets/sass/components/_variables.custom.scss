@@ -14,7 +14,7 @@ $primary-inverse: #ffffff;
 // Success
 $success: if(isDarkMode(), #0bb783, #22b573);
 $success-active: if(isDarkMode(), #04aa77, #22b573);
-$success-light: if(isDarkMode(), #1c3238, #e8fff3);
+$success-light: if(isDarkMode(), #1c3238, rgba(33, 181, 114, 0.274));
 $success-inverse: #ffffff;
 
 // Success-dark
