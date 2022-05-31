@@ -1,0 +1,200 @@
+<ng-container *ngIf="page_state === 'list'">
+  <h2 class="my-5">Orders</h2>
+  <div class="table-responsive my-10 bg-white">
+    <table class="table table-row-bordered gy-5 text-center">
+      <thead>
+        <tr class="fw-bolder fs-6 text-gray-800">
+          <th></th>
+          <th>Order ID</th>
+          <th>Customer</th>
+          <th>Status</th>
+          <th>Total Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let item of table; index as i">
+          <tr>
+            <td>
+              <div class="form-check ms-8">
+                <input
+                  class="form-check-input"
+                  name=""
+                  id=""
+                  type="checkbox"
+                  [value]="i"
+                />
+              </div>
+            </td>
+            <td>
+              <a (click)="changePageState('detail')">
+                <span class="id-link">#3450xxs</span> <br />
+                <span class="text-muted fs-7">Jun 11, Thu. 17:30</span></a
+              >
+            </td>
+            <td>Ali Yahoo</td>
+            <td>
+              <div
+                class="btn h-30px py-1 px-3"
+                [ngClass]="{
+                  'btn-light-waring': status === 'pending',
+                  'btn-light-danger': status === 'rejected',
+                  'btn-light-success': status === 'accepted'
+                }"
+              >
+                {{ status | titlecase }}
+              </div>
+            </td>
+            <td>$170,750</td>
+            <td>
+              <button
+                (click)="acceptOrder()"
+                class="btn btn-success h-30px me-2 py-1 px-3"
+              >
+                Accept
+              </button>
+              <button
+                (click)="declineOrder()"
+                class="btn btn-danger h-30px py-1 px-3"
+              >
+                Reject
+              </button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+
+<!-- begin:: Order Detail  -->
+
+<ng-container *ngIf="page_state === 'detail'">
+  <div class="my-3">
+    <a class="text-primary-dark fs-6" (click)="changePageState('list')">
+      <i class="bi bi-arrow-left me-2"></i>
+      All Orders
+    </a>
+  </div>
+
+  <div class="row">
+    <!-- begin::Order details card  -->
+
+    <div class="col-sm-10 col-12 mt-9">
+      <div class="card card-shadow">
+        <div class="card-header">
+          <p class="text-primary-dark fs-4 mb-0">
+            Order #103607. June 11, 2022 at 5:00pm
+          </p>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <h1 class="fs-4">Customer</h1>
+
+              <div class="my-3">
+                <div class="sm-img my-2">
+                  <img src="/assets/media/images/avi.png" alt="avi" />
+                </div>
+                <div class="clear-fix">
+                  <p class="text-primary-dark fs-6">John Fisher</p>
+                  <p class="fs-6">someone@example.com</p>
+                  <p class="fs-6">+90533123456</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <h1 class="fs-4">Billing Address</h1>
+
+              <p class="fs-6 mt-md-20">
+                Vee’s Essentials <br />
+                Gulseren Beachhouse <br />
+                Famagusta, North Cyprus
+              </p>
+            </div>
+
+            <div class="col-md-4">
+              <h1 class="fs-4">Delivery Address</h1>
+
+              <p class="fs-6 mt-md-20">
+                John Fisher <br />
+                East Asgard <br />
+                Famagusta, North Cyprus
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer d-flex justify-content-end">
+          <div>
+            <span class="fs-6 me-3"> Payment Status</span>
+
+            <span class="badge badge-pill badge-primary-dark">Unpaid</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- end:: Order details card  -->
+
+    <!-- begin::Item Detail card  -->
+
+    <div class="col-sm-10 col-12 my-9">
+      <div class="card card-shadow">
+        <div class="card-header">
+          <p class="text-primary-dark fs-4 mb-0">Items</p>
+        </div>
+        <div class="card-body p-0">
+          <table
+            class="table table-hover text-center table-inverse table-responsive"
+          >
+            <thead class="thead-default">
+              <tr>
+                <th class="col-auto">#</th>
+                <th class="col"></th>
+                <th class="col">Item</th>
+                <th class="col-auto">Qty</th>
+                <th class="col-auto">Price</th>
+                <th class="col-auto">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>
+                  <img
+                    src="/assets/media/images/demo3.png"
+                    alt=""
+                    srcset=""
+                    class="img-fluid"
+                  />
+                </td>
+                <td>Scented Oil</td>
+                <td>3</td>
+                <td>{{ 150 | currency: "TRY":"symbol-narrow" }}</td>
+                {{
+                  450 | currency: "TRY":"symbol-narrow"
+                }}
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer text-end">
+          <p class="fs-5 mb-2">
+            Sub Total: {{ 450 | currency: "TRY":"symbol-narrow" }}
+          </p>
+          <p class="fs-5 mb-2">
+            Delivery: {{ 30 | currency: "TRY":"symbol-narrow" }}
+          </p>
+          <p class="fs-5 mb-2">
+            Service Charge: {{ 450 | currency: "TRY":"symbol-narrow" }}
+          </p>
+          <h5 class="fs-6 mb-1">
+            Total: {{ 450 | currency: "TRY":"symbol-narrow" }}
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <!-- end::Item Detail Card  -->
+  </div>
+</ng-container>

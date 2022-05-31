@@ -28,8 +28,8 @@ $info-light: if(isDarkMode(), #2f264f, #f8f5ff);
 $info-inverse: #ffffff;
 
 // Danger
-$danger: if(isDarkMode(), #f64e60, #a41c4e);
-$danger-active: if(isDarkMode(), #ee2d41, #a41c4e);
+$danger: if(isDarkMode(), #f64e60, #f1392e);
+$danger-active: if(isDarkMode(), #ee2d41, #f1392e);
 $danger-light: if(isDarkMode(), #3a2434, #fff5f8);
 $danger-inverse: #ffffff;
 

@@ -1,0 +1,15 @@
+thead {
+  background-color: #f0f0f0;
+}
+tbody {
+  vertical-align: baseline;
+}
+
+.id-link {
+  cursor: pointer;
+  color: black;
+  &:hover {
+    text-decoration: underline;
+    color: #1f4173;
+  }
+}
