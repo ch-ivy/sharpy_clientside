@@ -35,9 +35,9 @@
             <td>Ali Yahoo</td>
             <td>
               <div
-                class="btn h-30px py-1 px-3"
+                class="btn h-30px py-1 px-3 fs-7 fw-normal"
                 [ngClass]="{
-                  'btn-light-waring': status === 'pending',
+                  'btn-light-warning': status === 'pending',
                   'btn-light-danger': status === 'rejected',
                   'btn-light-success': status === 'accepted'
                 }"
@@ -49,13 +49,13 @@
             <td>
               <button
                 (click)="acceptOrder()"
-                class="btn btn-success h-30px me-2 py-1 px-3"
+                class="btn btn-success fs-7 fw-normal h-30px me-2 py-1 px-3"
               >
                 Accept
               </button>
               <button
                 (click)="declineOrder()"
-                class="btn btn-danger h-30px py-1 px-3"
+                class="btn btn-danger fs-7 fw-normal h-30px py-1 px-3"
               >
                 Reject
               </button>
@@ -143,7 +143,7 @@
         <div class="card-header">
           <p class="text-primary-dark fs-4 mb-0">Items</p>
         </div>
-        <div class="card-body p-0">
+        <div class="card-body p-0 table-responsive">
           <table
             class="table table-hover text-center table-inverse table-responsive"
           >
@@ -180,16 +180,17 @@
         </div>
         <div class="card-footer text-end">
           <p class="fs-5 mb-2">
-            Sub Total: {{ 450 | currency: "TRY":"symbol-narrow" }}
+            Sub Total: &nbsp;&nbsp; {{ 450 | currency: "TRY":"symbol-narrow" }}
           </p>
           <p class="fs-5 mb-2">
-            Delivery: {{ 30 | currency: "TRY":"symbol-narrow" }}
+            Delivery:&nbsp;&nbsp; {{ 30 | currency: "TRY":"symbol-narrow" }}
           </p>
           <p class="fs-5 mb-2">
-            Service Charge: {{ 450 | currency: "TRY":"symbol-narrow" }}
+            Service Charge:&nbsp;&nbsp;
+            {{ 450 | currency: "TRY":"symbol-narrow" }}
           </p>
           <h5 class="fs-6 mb-1">
-            Total: {{ 450 | currency: "TRY":"symbol-narrow" }}
+            Total: &nbsp;&nbsp;{{ 450 | currency: "TRY":"symbol-narrow" }}
           </h5>
         </div>
       </div>

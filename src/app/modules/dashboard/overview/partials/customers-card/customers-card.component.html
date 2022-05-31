@@ -1,0 +1,49 @@
+<div class="card card-xl-stretch mb-5 mb-xl-8">
+  <!--begin::Header-->
+  <div class="card-header bg-secondary align-items-center border-0">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="fw-bolder text-dark fs-3">Top Customers</span>
+    </h3>
+  </div>
+  <!--end::Header-->
+  <!--begin::Body-->
+  <div class="card-body pt-5">
+    <ng-container *ngFor="let item of items; index as i">
+      <!--begin::Item-->
+
+      <div class="d-flex mb-7">
+        <!--begin::Symbol-->
+        <div class="symbol symbol-60px symbol-2by3 flex-shrink-0 me-4">
+          <img
+            src="/assets/media/images/demo{{ i + 1 }}.png"
+            class="mw-100"
+            alt=""
+          />
+        </div>
+        <!--end::Symbol-->
+        <!--begin::Section-->
+        <div
+          class="d-flex align-items-center flex-wrap flex-grow-1 mt-n2 mt-lg-n1"
+        >
+          <!--begin::Title-->
+          <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pe-3">
+            <a href="#" class="fs-5 text-gray-800 text-hover-primary fw-bolder"
+              >Cup &amp; Green</a
+            >
+          </div>
+          <!--end::Title-->
+          <!--begin::Info-->
+          <div class="text-end py-lg-0 py-2">
+            <span class="text-gray-800 fw-bolder fs-5">
+              {{ 3500 | currency: "TRY":"symbol-narrow" }}
+            </span>
+          </div>
+          <!--end::Info-->
+        </div>
+        <!--end::Section-->
+      </div>
+      <!--end::Item-->
+    </ng-container>
+  </div>
+  <!--end::Body-->
+</div>

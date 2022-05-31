@@ -29,7 +29,7 @@ export const RouteLinks = [
   {
     name: 'Shipping Address',
     icon: 'bi bi-gift',
-    route: '/address',
+    route: '/manage-address',
     status: 'buyer',
     sub_routes: null,
   },
@@ -37,6 +37,13 @@ export const RouteLinks = [
     name: 'Inventory',
     icon: 'bi bi-gift',
     route: '/inventory',
+    status: 'seller',
+    sub_routes: null,
+  },
+  {
+    name: 'Discount',
+    icon: 'bi bi-percent',
+    route: '/discount',
     status: 'seller',
     sub_routes: null,
   },
@@ -61,11 +68,11 @@ export const RouteLinks = [
     status: 'general',
     sub_routes: null,
   },
-  {
+  /* {
     name: 'Help',
     icon: 'bi bi-headset',
     route: '/help',
     status: 'seller',
     sub_routes: null,
-  },
+  }, */
 ];

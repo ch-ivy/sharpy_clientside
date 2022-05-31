@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header bg-secondary">
+    <h3 class="card-title align-items-start flex-column">
+      <span class="fw-bolder">Top Selling</span>
+    </h3>
+  </div>
+  <div class="card-body py-4">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="col"><h6 class="fs-5 fw-bold">Item</h6></th>
+          <th class="col-auto"><h6 class="fs-5 fw-bold">Price</h6></th>
+          <th class="col-auto"><h6 class="fs-5 fw-bold">Qty</h6></th>
+          <th class="col-auto"><h6 class="fs-5 fw-bold">Total</h6></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col d-flex flex-wrap">
+            <div class="sm-img me-2">
+              <img
+                src="/assets/media/images/demo6.png"
+                class="rounded"
+                alt=""
+              />
+            </div>
+            <div class="my-auto">
+              <p class="fw-bold">Red Dress</p>
+            </div>
+          </td>
+          <td class="col-auto">
+            <h6 class="fs-5 fw-bold">
+              {{ 100 | currency: "TRY":"symbol-narrow" }}
+            </h6>
+          </td>
+          <td class="col-auto"><h6 class="fs-5 fw-bold">4</h6></td>
+          <td class="col-auto">
+            <h6 class="fs-5 fw-bold">
+              {{ 450 | currency: "TRY":"symbol-narrow" }}
+            </h6>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
