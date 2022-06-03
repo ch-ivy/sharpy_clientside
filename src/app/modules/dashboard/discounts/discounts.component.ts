@@ -3,13 +3,16 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-discounts',
   templateUrl: './discounts.component.html',
-  styleUrls: ['./discounts.component.scss']
+  styleUrls: ['./discounts.component.scss'],
 })
 export class DiscountsComponent implements OnInit {
+  tabs: 'active' | 'expired' = 'active';
+  discount = true;
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  switchTabs(tab: 'active' | 'expired') {
+    this.tabs = tab;
   }
-
 }

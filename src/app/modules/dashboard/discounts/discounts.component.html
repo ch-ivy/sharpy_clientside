@@ -1,1 +1,46 @@
-<p>discounts works!</p>
+<div class="container-fluid">
+  <div class="d-flex flex-stack col-md-9 mx-auto">
+    <h3>Discount</h3>
+
+    <div class="svg-icon svg-icon-1 fs-3x">
+      <span class="bi bi-plus"></span>
+    </div>
+  </div>
+
+  <ul class="nav justify-content-center">
+    <li (click)="switchTabs('active')" class="nav-item mx-5 text-dark">
+      <p [class.active]="tabs === 'active'" class="fs-3">Active</p>
+    </li>
+    <li (click)="switchTabs('expired')" class="nav-item mx-5 text-dark">
+      <p [class.active]="tabs === 'expired'" class="fs-3">Expired</p>
+    </li>
+  </ul>
+
+  <ng-container *ngIf="!discount">
+    <div class="discount-svg">
+      <img src="/assets/media/svg/discount.svg" alt="no discount" />
+    </div>
+    <p class="fs-5 text-center">
+      Add discount codes to entice new customers and reward loyal ones.
+    </p>
+  </ng-container>
+
+  <ng-container>
+    <div class="row mt-10">
+      <div class="col-md-6">
+        <div class="card text-white discount-card">
+          <div class="card-body pb-0">
+            <h4 class="card-title">Vallentine’s day special</h4>
+            <p class="text-dark fs-5">50% off</p>
+
+            <hr class="mt-5 mx-n8 bg-dark" />
+            <div class="my-2 d-flex flex-stack text-dark">
+              <p class="fs-5">Ends 11 Jun 2022</p>
+              <p class="fs-5">60 uses</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>

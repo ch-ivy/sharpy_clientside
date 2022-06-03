@@ -1,0 +1,36 @@
+.active {
+  color: #1f4173;
+  font-weight: bold;
+  border-bottom: 3px solid #1f4173;
+  padding-bottom: 5px;
+}
+.nav-item p {
+  cursor: pointer;
+}
+
+.discount-svg {
+  height: 50%;
+  width: 50%;
+  margin: 7% auto 50px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.discount-card {
+  border-top: 11px solid #1f4173;
+
+  hr {
+    border: 1px dotted;
+    height: 0px;
+  }
+}
+
+@media (max-width: 350px) {
+  .discount-svg {
+    height: 100%;
+    width: 100%;
+  }
+}
